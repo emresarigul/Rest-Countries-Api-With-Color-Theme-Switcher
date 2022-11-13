@@ -19,7 +19,7 @@ const Content = ({ countries, countryName, setCountryName, darkMode }) => {
     "America",
     "Asia",
     "Europe",
-    "Ocenia",
+    "Oceania",
   ];
 
   const regionHandler = (element) => {
@@ -53,7 +53,7 @@ const Content = ({ countries, countryName, setCountryName, darkMode }) => {
   };
 
   const countrySearchHandler = (e) => {
-    setSearchCountry(e.target.value);
+    setSearchCountry(e.target.value.toLowerCase());
   };
 
   return (
