@@ -1,0 +1,144 @@
+.content-wrapper {
+  padding-top: 3rem;
+  transition: 0.2s ease-in-out;
+}
+.content-wrapper .country-search-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 991px) {
+  .content-wrapper .country-search-wrapper {
+    flex-direction: column;
+  }
+}
+.content-wrapper .country-search-wrapper .left-search .search-icon {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  color: hsl(0deg, 0%, 52%);
+  transition: 0.2s ease-in-out;
+}
+.content-wrapper .country-search-wrapper .left-search .country-searchbox {
+  width: 500px;
+  height: 60px;
+  margin-bottom: 3rem;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 60px;
+  transition: 0.2s ease-in-out;
+}
+.content-wrapper .country-search-wrapper .left-search .country-searchbox::-moz-placeholder {
+  color: hsl(0deg, 0%, 52%);
+  -moz-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+.content-wrapper .country-search-wrapper .left-search .country-searchbox:-ms-input-placeholder {
+  color: hsl(0deg, 0%, 52%);
+  -ms-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+.content-wrapper .country-search-wrapper .left-search .country-searchbox::placeholder {
+  color: hsl(0deg, 0%, 52%);
+  transition: 0.2s ease-in-out;
+}
+@media (max-width: 991px) {
+  .content-wrapper .country-search-wrapper .left-search .country-searchbox {
+    width: 100%;
+  }
+}
+.content-wrapper .country-search-wrapper .right-filter .continent-container {
+  width: 200px;
+  height: 60px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+  font-weight: 600;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+}
+.content-wrapper .country-search-wrapper .right-filter .continent-container:focus {
+  outline: none;
+}
+@media (max-width: 991px) {
+  .content-wrapper .country-search-wrapper .right-filter .continent-container {
+    margin-bottom: 3rem;
+  }
+}
+.content-wrapper .countries-flex-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+@media (max-width: 767px) {
+  .content-wrapper .countries-flex-wrapper {
+    gap: 2rem;
+  }
+}
+.content-wrapper .countries-flex-wrapper a {
+  color: #000;
+  transition: 0.2s ease-in-out;
+}
+.content-wrapper .countries-flex-wrapper .country-box {
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+  width: 300px;
+  height: 370px;
+}
+.content-wrapper .countries-flex-wrapper .country-box .country-flag {
+  height: 180px;
+}
+.content-wrapper .countries-flex-wrapper .country-box .country-flag img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+.content-wrapper .countries-flex-wrapper .country-box .country-info {
+  padding: 25px 20px 50px 25px;
+}
+.content-wrapper .countries-flex-wrapper .country-box .country-info .country-name {
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.content-wrapper .countries-flex-wrapper .country-box .country-info .country-population,
+.content-wrapper .countries-flex-wrapper .country-box .country-info .country-region,
+.content-wrapper .countries-flex-wrapper .country-box .country-info .country-capital {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.content-wrapper .countries-flex-wrapper .country-box .country-info span {
+  font-weight: 400;
+}
+
+/* dark mode*/
+.content-wrapper.dark .country-search-wrapper .search-icon {
+  color: hsl(0deg, 0%, 100%);
+}
+.content-wrapper.dark .country-search-wrapper .country-searchbox {
+  background-color: hsl(209deg, 23%, 22%);
+  color: hsl(0deg, 0%, 100%);
+  box-shadow: rgba(18, 18, 18, 0.1) 0px 8px 24px;
+}
+.content-wrapper.dark .country-search-wrapper .country-searchbox::-moz-placeholder {
+  color: hsl(0deg, 0%, 100%);
+}
+.content-wrapper.dark .country-search-wrapper .country-searchbox:-ms-input-placeholder {
+  color: hsl(0deg, 0%, 100%);
+}
+.content-wrapper.dark .country-search-wrapper .country-searchbox::placeholder {
+  color: hsl(0deg, 0%, 100%);
+}
+.content-wrapper.dark .countries-flex-wrapper a {
+  color: hsl(0deg, 0%, 100%);
+}
+.content-wrapper.dark .countries-flex-wrapper .country-box {
+  background-color: hsl(209deg, 23%, 22%);
+  box-shadow: rgba(18, 18, 18, 0.1) 0px 8px 24px;
+}/*# sourceMappingURL=Content.css.map */

@@ -1,0 +1,57 @@
+@import "mixin";
+@import "breakpoints";
+
+.header-wrapper {
+  box-shadow: rgba(33, 35, 38, 0.2) 0px 10px 10px -10px;
+  background-color: #fff;
+  position: relative;
+  transition: 0.2s ease-in-out;
+  .header-flex-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    .logo-title {
+      h1 {
+        font-size: 25px;
+        @include sm {
+          font-size: 18px;
+        }
+      }
+    }
+    .theme-mode {
+      cursor: pointer;
+      .dark-light-mode {
+        .sun-icon {
+          color: #fff;
+        }
+        .light {
+          font-weight: 600;
+          margin-left: 10px;
+          color: #fff;
+          @include sm {
+            font-size: 15px;
+          }
+        }
+        .dark {
+          font-weight: 600;
+          margin-left: 10px;
+          color: #000;
+          @include sm {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* dark mode */
+
+.header-wrapper.dark {
+  background-color: hsl(209, 23%, 22%);
+
+  .logo-title {
+    color: #fff;
+  }
+}

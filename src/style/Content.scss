@@ -1,0 +1,133 @@
+@import "mixin";
+@import "breakpoints";
+
+.content-wrapper {
+  padding-top: 3rem;
+  transition: 0.2s ease-in-out;
+  .country-search-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    @include lg {
+      flex-direction: column;
+    }
+    .left-search {
+      .search-icon {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        color: hsl(0, 0%, 52%);
+        transition: 0.2s ease-in-out;
+      }
+      .country-searchbox {
+        width: 500px;
+        height: 60px;
+        margin-bottom: 3rem;
+        box-shadow: rgb(149 157 165 / 10%) 0px 8px 24px;
+        border: none;
+        border-radius: 5px;
+        padding-left: 60px;
+        transition: 0.2s ease-in-out;
+        &::placeholder {
+          color: hsl(0, 0%, 52%);
+          transition: 0.2s ease-in-out;
+        }
+        @include lg {
+          width: 100%;
+        }
+      }
+    }
+    .right-filter {
+      .continent-container {
+        width: 200px;
+        height: 60px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: rgb(149 157 165 / 10%) 0px 8px 24px;
+        font-weight: 600;
+        padding-left: 20px;
+        padding-right: 20px;
+        appearance: none;
+        position: relative;
+        &:focus {
+          outline: none;
+        }
+        @include lg {
+          margin-bottom: 3rem;
+        }
+      }
+    }
+  }
+
+  .countries-flex-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    @include md {
+      gap: 2rem;
+    }
+    a {
+      color: #000;
+      transition: 0.2s ease-in-out;
+    }
+    .country-box {
+      background-color: #fff;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      border-radius: 5px;
+      width: 300px;
+      height: 370px;
+      .country-flag {
+        height: 180px;
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 5px 5px 0 0;
+        }
+      }
+      .country-info {
+        padding: 25px 20px 50px 25px;
+        .country-name {
+          font-weight: 800;
+          margin-bottom: 0.5rem;
+        }
+        .country-population,
+        .country-region,
+        .country-capital {
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+/* dark mode*/
+
+.content-wrapper.dark {
+  .country-search-wrapper {
+    .search-icon {
+      color: hsl(0, 0%, 100%);
+    }
+    .country-searchbox {
+      background-color: hsl(209, 23%, 22%);
+      color: hsl(0, 0%, 100%);
+      box-shadow: rgb(18 18 18 / 10%) 0px 8px 24px;
+      &::placeholder {
+        color: hsl(0, 0%, 100%);
+      }
+    }
+  }
+  .countries-flex-wrapper {
+    a {
+      color: hsl(0, 0%, 100%);
+    }
+    .country-box {
+      background-color: hsl(209, 23%, 22%);
+      box-shadow: rgb(18 18 18 / 10%) 0px 8px 24px;
+    }
+  }
+}
