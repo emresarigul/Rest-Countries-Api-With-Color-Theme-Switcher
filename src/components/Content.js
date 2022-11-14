@@ -9,11 +9,7 @@ const Content = () => {
   const { darkMode, countries, setCountryName } = useContext(PageContexts);
 
   const [searchCountry, setSearchCountry] = useState("");
-  const [region, setRegion] = useState("All");
-
-  //const {} = useParams();
-
-  //Americas, Europe, Africa, Asia,
+  const [region, setRegion] = useState("Filter by Region");
 
   const regions = [
     "Filter by Region",
@@ -77,7 +73,7 @@ const Content = () => {
           <div className="right-filter">
             <form action="">
               <select
-                onClick={(e) => {
+                onChange={(e) => {
                   setRegion(e.target.value);
                 }}
                 name="continents"
