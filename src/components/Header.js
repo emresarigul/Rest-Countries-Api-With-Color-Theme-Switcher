@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../style/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
-const Header = ({ darkMode, setDarkMode }) => {
+import { PageContexts } from "../context/context";
+
+const Header = () => {
+  const { darkMode, setDarkMode } = useContext(PageContexts);
+
   const darkModeHandler = () => {
     setDarkMode(!darkMode);
     document.body.classList.toggle("dark");

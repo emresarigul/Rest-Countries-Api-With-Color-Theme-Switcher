@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import "../src/style/App.css";
 import Content from "./components/Content";
 import CountryInfo from "./components/CountryInfo";
 import Header from "./components/Header";
+import PageContextsProvider from "./context/context";
+import { PageContexts } from "./context/context";
 
 const url = "https://restcountries.com/v3.1/all";
 
-function App() {
-  const [countries, setCountries] = useState([]);
-  const [countryName, setCountryName] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+function AppComponent() {
+  const { setCountries } = useContext(PageContexts);
 
   const fetchCountries = async () => {
     const response = await fetch(url);
-    const countries = await response.json();
-    setCountries(countries);
+    const countriesData = await response.json();
+    setCountries(countriesData);
   };
 
   useEffect(() => {
@@ -24,33 +24,19 @@ function App() {
 
   return (
     <div>
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Header />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Content
-              countries={countries}
-              countryName={countryName}
-              setCountryName={setCountryName}
-              darkMode={darkMode}
-            />
-          }
-        />
-        <Route
-          path="/country-detail/:id"
-          element={
-            <CountryInfo
-              countryName={countryName}
-              setCountryName={setCountryName}
-              countries={countries}
-              darkMode={darkMode}
-            />
-          }
-        />
+        <Route path="/" element={<Content />} />
+        <Route path="/country-detail/:id" element={<CountryInfo />} />
       </Routes>
     </div>
   );
 }
+
+const App = () => (
+  <PageContextsProvider>
+    <AppComponent />
+  </PageContextsProvider>
+);
 
 export default App;

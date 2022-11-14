@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../style/Content.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { PageContexts } from "../context/context";
 
-const Content = ({ countries, countryName, setCountryName, darkMode }) => {
+const Content = () => {
+  const { darkMode, countries, setCountryName } = useContext(PageContexts);
+
   const [searchCountry, setSearchCountry] = useState("");
   const [region, setRegion] = useState("All");
 

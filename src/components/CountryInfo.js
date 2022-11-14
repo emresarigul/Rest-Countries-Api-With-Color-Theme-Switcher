@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../style/CountryInfo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { PageContexts } from "../context/context";
 
-const CountryInfo = ({ countries, countryName, setCountryName, darkMode }) => {
+const CountryInfo = () => {
+  const { countries, countryName, setCountryName, darkMode } =
+    useContext(PageContexts);
+
   return (
     <div className={`country-info-wrapper ${!darkMode ? "" : "dark"}`}>
       <div className="container">
@@ -19,9 +23,15 @@ const CountryInfo = ({ countries, countryName, setCountryName, darkMode }) => {
             return country.cca3.includes(countryName);
           })
           .map((element, index) => {
-            let nativeName = Object.values(element.name.nativeName);
-            let currencies = Object.values(element.currencies);
-            let languages = Object.values(element.languages);
+            let nativeName = element.name.nativeName
+              ? Object.values(element.name.nativeName)
+              : "";
+            let currencies = element.currencies
+              ? Object.values(element.currencies)
+              : "";
+            let languages = element.languages
+              ? Object.values(element.languages)
+              : "";
             let borders = element.borders;
 
             return (
@@ -36,7 +46,8 @@ const CountryInfo = ({ countries, countryName, setCountryName, darkMode }) => {
                   <div className="other-selected-infos">
                     <div className="left">
                       <div className="sub-infos">
-                        <span> Native Name:</span> {nativeName[0].official}
+                        <span> Native Name:</span>
+                        {nativeName.length ? nativeName[0].official : ""}
                       </div>
                       <div className="sub-infos">
                         <span>Population:</span>
@@ -57,19 +68,22 @@ const CountryInfo = ({ countries, countryName, setCountryName, darkMode }) => {
                         <span>Top Level Domain:</span> {element.tld}
                       </div>
                       <div className="sub-infos">
-                        <span>Currencies:</span> {currencies[0].name}
+                        <span>Currencies:</span>
+                        {currencies.length ? currencies[0].name : ""}
                       </div>
                       <div className="sub-infos language">
                         <span>Languages:</span>
-                        {languages.map((language, index) => {
-                          return (
-                            <div key={index}>
-                              {index === languages.length - 1
-                                ? language
-                                : language + ","}
-                            </div>
-                          );
-                        })}
+                        {languages.length
+                          ? languages.map((language, index) => {
+                              return (
+                                <div key={index}>
+                                  {index === languages.length - 1
+                                    ? language
+                                    : language + ","}
+                                </div>
+                              );
+                            })
+                          : ""}
                       </div>
                     </div>
                   </div>
