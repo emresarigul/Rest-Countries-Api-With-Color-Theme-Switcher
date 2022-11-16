@@ -44,6 +44,9 @@
         right: 25px;
         top: 18px;
         z-index: 1;
+        @include lg {
+          left: 170px;
+        }
       }
       .continent-container {
         width: 200px;

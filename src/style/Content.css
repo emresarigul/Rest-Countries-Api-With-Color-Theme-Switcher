@@ -57,6 +57,11 @@
   top: 18px;
   z-index: 1;
 }
+@media (max-width: 991px) {
+  .content-wrapper .country-search-wrapper .right-filter .down-icon {
+    left: 170px;
+  }
+}
 .content-wrapper .country-search-wrapper .right-filter .continent-container {
   width: 200px;
   height: 60px;
