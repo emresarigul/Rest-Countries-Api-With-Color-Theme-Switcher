@@ -3,6 +3,7 @@ import "../style/Content.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { PageContexts } from "../context/context";
 
 const Content = () => {
@@ -71,6 +72,10 @@ const Content = () => {
             />
           </div>
           <div className="right-filter">
+            <div className="down-icon">
+              <FontAwesomeIcon icon={faCaretDown} />
+            </div>
+
             <form action="">
               <select
                 onChange={(e) => {

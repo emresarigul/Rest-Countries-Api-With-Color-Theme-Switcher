@@ -38,6 +38,13 @@
       }
     }
     .right-filter {
+      position: relative;
+      .down-icon {
+        position: absolute;
+        right: 25px;
+        top: 18px;
+        z-index: 1;
+      }
       .continent-container {
         width: 200px;
         height: 60px;
@@ -118,6 +125,16 @@
       box-shadow: rgb(18 18 18 / 10%) 0px 8px 24px;
       &::placeholder {
         color: hsl(0, 0%, 100%);
+      }
+    }
+    .right-filter {
+      .down-icon {
+        color: #fff;
+      }
+      .continent-container {
+        background-color: hsl(209, 23%, 22%);
+        color: #fff;
+        box-shadow: rgb(18 18 18 / 10%) 0px 8px 24px;
       }
     }
   }

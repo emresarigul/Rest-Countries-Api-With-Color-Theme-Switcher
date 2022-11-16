@@ -48,6 +48,15 @@
     width: 100%;
   }
 }
+.content-wrapper .country-search-wrapper .right-filter {
+  position: relative;
+}
+.content-wrapper .country-search-wrapper .right-filter .down-icon {
+  position: absolute;
+  right: 25px;
+  top: 18px;
+  z-index: 1;
+}
 .content-wrapper .country-search-wrapper .right-filter .continent-container {
   width: 200px;
   height: 60px;
@@ -134,6 +143,14 @@
 }
 .content-wrapper.dark .country-search-wrapper .country-searchbox::placeholder {
   color: hsl(0deg, 0%, 100%);
+}
+.content-wrapper.dark .country-search-wrapper .right-filter .down-icon {
+  color: #fff;
+}
+.content-wrapper.dark .country-search-wrapper .right-filter .continent-container {
+  background-color: hsl(209deg, 23%, 22%);
+  color: #fff;
+  box-shadow: rgba(18, 18, 18, 0.1) 0px 8px 24px;
 }
 .content-wrapper.dark .countries-flex-wrapper a {
   color: hsl(0deg, 0%, 100%);
