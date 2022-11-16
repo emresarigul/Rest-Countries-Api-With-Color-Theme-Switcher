@@ -105,6 +105,7 @@
   border-radius: 5px;
   width: 300px;
   height: 370px;
+  transition: 0.2s ease-in-out;
 }
 .content-wrapper .countries-flex-wrapper .country-box .country-flag {
   height: 180px;
@@ -129,6 +130,9 @@
 }
 .content-wrapper .countries-flex-wrapper .country-box .country-info span {
   font-weight: 400;
+}
+.content-wrapper .countries-flex-wrapper .country-box:hover {
+  scale: 1.05;
 }
 
 /* dark mode*/
