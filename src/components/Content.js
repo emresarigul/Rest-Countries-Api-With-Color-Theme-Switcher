@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { PageContexts } from "../context/context";
 
 const Content = () => {
-  const { darkMode, countries, setCountryName } = useContext(PageContexts);
+  const { darkMode, countries } = useContext(PageContexts);
 
   const [searchCountry, setSearchCountry] = useState("");
   const [region, setRegion] = useState("Filter by Region");
@@ -99,9 +99,6 @@ const Content = () => {
                 className="mb-4"
                 to={`/country-detail/${country.cca3}`}
                 key={index}
-                onClick={() => {
-                  setCountryName(country.cca3);
-                }}
               >
                 <div className="country-box" key={index}>
                   <div className="country-flag">

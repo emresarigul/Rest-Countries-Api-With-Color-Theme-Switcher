@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../style/CountryInfo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { PageContexts } from "../context/context";
 
 const CountryInfo = () => {
-  const { countries, countryName, setCountryName, darkMode } =
-    useContext(PageContexts);
+  const { countries, darkMode } = useContext(PageContexts);
+
+  const { id } = useParams();
 
   return (
     <div className={`country-info-wrapper ${!darkMode ? "" : "dark"}`}>
@@ -20,7 +21,7 @@ const CountryInfo = () => {
         </Link>
         {countries
           .filter((country) => {
-            return country.cca3.includes(countryName);
+            return country.cca3.includes(id);
           })
           .map((element, index) => {
             let nativeName = element.name.nativeName
@@ -93,14 +94,9 @@ const CountryInfo = () => {
                       {borders !== undefined ? (
                         borders.map((border, index) => {
                           return (
-                            <div
-                              onClick={() => {
-                                setCountryName(border);
-                              }}
-                              key={index}
-                            >
-                              {border}
-                            </div>
+                            <Link to={`/country-detail/${border}`} key={index}>
+                              <div>{border}</div>
+                            </Link>
                           );
                         })
                       ) : (
