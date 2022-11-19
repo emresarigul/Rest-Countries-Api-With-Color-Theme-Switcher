@@ -90,6 +90,10 @@
             cursor: pointer;
             transition: 0.2s ease-in-out;
             text-align: center;
+            @include sm {
+              font-size: 15px;
+              padding: 5px 20px;
+            }
 
             &:hover {
               opacity: 0.5;
@@ -113,6 +117,7 @@
       .border-countries {
         div {
           box-shadow: rgb(18 18 18 / 40%) 0px 0px 15px;
+          color: hsl(0, 0%, 100%);
         }
       }
     }

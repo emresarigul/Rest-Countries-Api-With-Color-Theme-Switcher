@@ -103,6 +103,12 @@
   transition: 0.2s ease-in-out;
   text-align: center;
 }
+@media (max-width: 575px) {
+  .country-info-wrapper .info-flex-wrapper .selected-country-info .border-wrapper .border-countries div {
+    font-size: 15px;
+    padding: 5px 20px;
+  }
+}
 .country-info-wrapper .info-flex-wrapper .selected-country-info .border-wrapper .border-countries div:hover {
   opacity: 0.5;
 }
@@ -117,4 +123,5 @@
 }
 .country-info-wrapper.dark .info-flex-wrapper .selected-country-info .border-countries div {
   box-shadow: rgba(18, 18, 18, 0.4) 0px 0px 15px;
+  color: hsl(0deg, 0%, 100%);
 }/*# sourceMappingURL=CountryInfo.css.map */
