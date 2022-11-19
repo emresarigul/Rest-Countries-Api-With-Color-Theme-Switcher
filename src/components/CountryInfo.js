@@ -10,6 +10,32 @@ const CountryInfo = () => {
 
   const { id } = useParams();
 
+  // finds the selected country
+  let currentCountry = countries.filter((country) => {
+    return country.cca3.includes(id);
+  });
+
+  // finds the selected country borders
+  let currentCountryBorders = currentCountry[0]?.borders;
+
+  let currentCountryBordersWithKeys = [];
+
+  /*if current country has a border then
+  it finds the names of the border countries from
+  their borderkeys and pushes to empty array*/
+  if (currentCountryBorders !== undefined) {
+    for (let i = 0; i < countries.length; i++) {
+      for (let k = 0; k < countries.length; k++) {
+        if (countries[i].cca3.includes(currentCountryBorders[k])) {
+          currentCountryBordersWithKeys.push({
+            name: countries[i].name.common,
+            specialKey: countries[i].cca3,
+          });
+        }
+      }
+    }
+  }
+
   return (
     <div className={`country-info-wrapper ${!darkMode ? "" : "dark"}`}>
       <div className="container">
@@ -92,10 +118,13 @@ const CountryInfo = () => {
                     <div className="border-title">Border Countries:</div>
                     <div className="border-countries">
                       {borders !== undefined ? (
-                        borders.map((border, index) => {
+                        currentCountryBordersWithKeys.map((border, index) => {
                           return (
-                            <Link to={`/country-detail/${border}`} key={index}>
-                              <div>{border}</div>
+                            <Link
+                              to={`/country-detail/${border.specialKey}`}
+                              key={index}
+                            >
+                              <div>{border.name}</div>
                             </Link>
                           );
                         })
