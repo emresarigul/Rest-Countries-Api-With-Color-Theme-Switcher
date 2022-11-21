@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../style/Content.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,19 +9,52 @@ import { PageContexts } from "../context/context";
 const Content = () => {
   const { darkMode, countries } = useContext(PageContexts);
 
-  const [searchCountry, setSearchCountry] = useState("");
-  const [region, setRegion] = useState("Filter by Region");
+  //const [searchCountry, setSearchCountry] = useState("");
+  //const [region, setRegion] = useState("Filter by Region");
+  const [filteredCountries, setFilteredCountries] = useState(countries);
 
-  const regions = [
-    "Filter by Region",
-    "All",
-    "Africa",
-    "America",
-    "Asia",
-    "Europe",
-    "Oceania",
-  ];
+  const initialState = { search: "", filter: "All" };
 
+  const [searchRegion, setSearchRegion] = useState(initialState);
+
+  const regions = ["All", "Africa", "America", "Asia", "Europe", "Oceania"];
+
+  const handleChange = (e) => {
+    setSearchRegion((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const getFilteredRegions = (requestModel) => {
+    return countries.filter(
+      (country) =>
+        (requestModel.filter === "All" ||
+          country.region.includes(requestModel.filter)) &&
+        (requestModel.search === "" ||
+          country.name.common
+            .toLowerCase()
+            .includes(requestModel.search.toLowerCase()))
+    );
+  };
+
+  useEffect(() => {
+    if (countries.length > 0) {
+      setFilteredCountries(countries);
+    }
+  }, [countries]);
+
+  useEffect(() => {
+    if (searchRegion.search || searchRegion.filter !== "All") {
+      const data = getFilteredRegions(searchRegion);
+      setFilteredCountries(data);
+    } else {
+      setFilteredCountries(countries);
+    }
+  }, [searchRegion.search, searchRegion.filter]);
+
+  /*
+  old version
   const regionHandler = (element) => {
     if (
       (element === "All" || element === "Filter by Region") &&
@@ -50,11 +83,12 @@ const Content = () => {
           country.name.common.toLowerCase().includes(searchCountry)
       );
     }
-  };
-
+  };*/
+  /*
+  old version
   const countrySearchHandler = (e) => {
     setSearchCountry(e.target.value.toLowerCase());
-  };
+  };*/
 
   return (
     <div className={`content-wrapper ${!darkMode ? "" : "dark"}`}>
@@ -66,7 +100,8 @@ const Content = () => {
             </div>
             <input
               className="country-searchbox"
-              onChange={countrySearchHandler}
+              name="search"
+              onChange={handleChange}
               type="text"
               placeholder="Search for a country"
             />
@@ -78,10 +113,8 @@ const Content = () => {
 
             <form action="">
               <select
-                onChange={(e) => {
-                  setRegion(e.target.value);
-                }}
-                name="continents"
+                onChange={handleChange}
+                name="filter"
                 id="continents"
                 className="continent-container"
               >
@@ -98,7 +131,7 @@ const Content = () => {
         </div>
 
         <div className="countries-flex-wrapper">
-          {regionHandler(region).map((country, index) => {
+          {filteredCountries.map((country, index) => {
             return (
               <Link
                 className="mb-4"

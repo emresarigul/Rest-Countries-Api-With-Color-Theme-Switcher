@@ -20,12 +20,12 @@ const CountryInfo = () => {
 
   let currentCountryBordersWithKeys = [];
 
-  /*if current country has a border then
+  /*if the current country has a border then
   it finds the names of the border countries from
   their borderkeys and pushes to empty array*/
   if (currentCountryBorders !== undefined) {
     for (let i = 0; i < countries.length; i++) {
-      for (let k = 0; k < countries.length; k++) {
+      for (let k = 0; k < currentCountryBorders.length; k++) {
         if (countries[i].cca3.includes(currentCountryBorders[k])) {
           currentCountryBordersWithKeys.push({
             name: countries[i].name.common,
